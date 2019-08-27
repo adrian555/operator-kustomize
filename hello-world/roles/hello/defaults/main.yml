@@ -1,0 +1,4 @@
+---
+# defaults file for hello
+deploy_env: "{{ lookup('env','DEPLOY_ENV') | default('base', true) }}"
+namespace: "{{ meta.namespace | default('default', true) }}"

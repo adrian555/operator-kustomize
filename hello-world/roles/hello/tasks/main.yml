@@ -1,0 +1,12 @@
+---
+# tasks file for hello
+- name: generate from template
+  template:
+    src: hello-world.yaml.j2
+    dest: /opt/ansible/hello-world.yaml
+    mode: 0644
+
+- name: create service
+  k8s:
+    state: present
+    src: /opt/ansible/hello-world.yaml

@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-app
+  namespace: {{ namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: hello-world
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+        - name: hello-world
+          image: adrian555/hello-world:v0.0.1
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+          - name: DEPLOY_ENV
+            value: {{ deploy_env }}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-world
+  namespace: {{ namespace }}
+  labels:
+    app: hello-world
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 31308
+  selector:
+    app: hello-world
+  type: LoadBalancer
