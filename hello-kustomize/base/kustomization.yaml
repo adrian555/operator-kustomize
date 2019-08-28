@@ -16,6 +16,6 @@ images:
   newName: adrian555/hello-op
   newTag: v0.0.1
 configMapGenerator:
-- name: openaihub-install-config	
+- name: install-config	
   literals:	
     - DEPLOY_ENV="base"
