@@ -1,5 +1,7 @@
 This repo demonstrates the ability to pass config from operator to application and deploy the operator in kustomize way so that the overlays can be applied for different cluster environments.
 
+In the example below, an operator is created and deployed to install the application. The application/service will print a message `Hello <deploy_env>!`. The `<deploy_env>` is a string that is passed from the operator to the application. The example uses `overlay` with `kustomize` generating the config map and operator deployment `yaml` file.
+
 * build the hello-world image
 
 ```command line

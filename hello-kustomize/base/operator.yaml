@@ -47,7 +47,7 @@ spec:
             - name: DEPLOY_ENV
               valueFrom:
                 configMapKeyRef:
-                  name: openaihub-install-config
+                  name: install-config
                   key: DEPLOY_ENV
       volumes:
         - name: runner
